@@ -1,13 +1,19 @@
 *{
     box-sizing: border-box;
 }
+
 html{
     width: 100%;
     height: auto;
+    max-width: 100%;
+
     overflow-x: hidden;
 
 }
+
 body{
+    max-width: 100%;
+
     margin: 0;
     height: auto;
     overflow-x: hidden;
@@ -37,7 +43,7 @@ p,h1,h2{
     flex-basis: 40%;
     text-align: center;
     padding: 10px;
-    margin-top: -170px;  /* Adds space between columns on smaller screens */
+    margin-top: 0;  /* Adds space between columns on smaller screens */
 
 }
 
@@ -122,6 +128,7 @@ p,h1,h2{
 /* Shop category container with horizontal scrolling */
 #shop-by-category {
     width: 100%;
+
 }
 
 .shop-category {
@@ -144,6 +151,7 @@ p,h1,h2{
     object-position: center;
     border-radius: 25px;
     scroll-snap-align: start; /* Ensures that the item snaps into place */
+    overflow: hidden;
 }
 
 /* Image container for each item */

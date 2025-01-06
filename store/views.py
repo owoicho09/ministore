@@ -12,9 +12,7 @@ def index(request):
     # If the product is found, retrieve all associated items
     if product:
         items = Items.objects.filter(product=product, featured=True)
-    for p in products:
-        print('--',p.name)
-    print(products)
+
     context = {
         'products':products,
         'items':items

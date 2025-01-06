@@ -1,10 +1,11 @@
- body {
+ html, body {
       font-family: Arial, sans-serif;
       margin: 0;
+          max-width: 100%;
+
       padding: 0;
       box-sizing: border-box;
-
-          overflow-x: hidden;
+      overflow-x: hidden;
 
     }
 
@@ -84,12 +85,14 @@
     margin-right: 10px;
 }
 
+
+
 /* Media Query for Mobile Devices */
 @media screen and (max-width: 600px) {
     /* Keep search input and button on the same line */
     .search-bar {
         flex-direction: row;               /* Keep the input and button on one line */
-        width: 90%;                         /* Take 90% of the screen width */
+        width: 100%;                         /* Take 90% of the screen width */
         margin: 15px auto;                  /* Center the search bar */
     }
 
@@ -98,13 +101,7 @@
         margin-right: 10px;                 /* Add space between input and button */
     }
 
-    .search-bar button {
-        width: 35%;                        /* Button takes remaining width */
-    }
 
-    #search-results {
-        width: 100%;                       /* Ensure search results also fit the screen width */
-    }
 }
 
 
@@ -158,6 +155,9 @@
     margin-right: 100px;
     margin-bottom: -15px; /* Add space between items */
 }
+
+
+
 
 /* Optional: remove margin from the last category item */
 .category-item:last-child {
