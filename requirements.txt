@@ -23,8 +23,6 @@ click-plugins==1.1.1
 click-repl==0.3.0
 cloudinary==1.41.0
 
-conda-repo-cli
-conda-verify
 cron-descriptor
 
 cssutils
