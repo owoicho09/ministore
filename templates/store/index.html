@@ -1,0 +1,607 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/mike-parody-commerce.css' %}">
+     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <title>You&MeShop</title>
+</head>
+<body>
+    <div id="page-container">
+        <div class="nav-bar">
+        <nav>
+
+    <div class="search-bar">
+    <form action="{% url 'store:search' %}" method="GET">
+        <input type="text" id="search-box" placeholder="Search for products..." autocomplete="off" name="q">
+        <button type="submit" id="search-btn">Search</button>
+        <div id="search-results"></div>
+    </form>
+
+</div>
+
+</nav>
+
+
+        </div>
+        <div id="hero">
+            <div class="right-pack">
+                <img src="{% static 'images/shopimg3.png' %}" alt="">
+            </div>
+
+
+            <div class="left-pack">
+                <p class="discount-t">Get up to 15% Discount if you buy now </p>
+                <p class="heading-t">Discover quality products at great prices - Exclusively from our store</p>
+            </div>
+        </div>
+
+       <section id="categories" class="categories">
+    <h2>What we sell </h2>
+                      <div class="category-list">
+
+                    {% for product in products %}
+                        <a href="{% url 'store:item_page' product.product_id %}" class="dropdown-item">
+                           <div class="category-item"> {{ product.name }}</div>
+                        </a>
+
+                    {% endfor %}
+                      </div>
+
+
+
+
+  </section>
+
+
+<div class="popular-section">
+    <h2 class="popular-heading">Popular Items</h2>
+    <div class="popular-line section-section scroll-container">
+        <!-- Product Item 1 -->
+        {% for item in items %}
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{{item.image.url}}" alt="Motor Spare Part">
+            </div>
+            <div class="p-items-t">
+                <p>{{item.name}}</p>
+
+                <p>₦ {{item.price}}</p>
+                <p class="whatsapp" data-whatsapp="081428784380">{{item.phone}}</p>
+
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-img-holder">
+            <img id="modal-img" src="" alt="">
+        </div>
+        <div class="modal-details">
+            <p id="modal-title"></p>
+            <p id="modal-price"></p>
+
+            <p>
+                <a id="whatsapp-link" href="#" target="_blank">
+                    <img src="https://th.bing.com/th/id/R.cf0c07758e4d97b05e0cb77e315b5f34?rik=f9QTPzCOuYOXKg&pid=ImgRaw&r=0" alt="WhatsApp Logo" class="whatsapp-logo">
+                            <span class="whatsapp-text">Send a WhatsApp message</span>
+
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="popular-section">
+    <div class="popular-line section-section scroll-container">
+        <!-- Product Item 1 -->
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{% static 'images/bag2.jpeg' %}" alt="Motor Spare Part">
+            </div>
+            <div class="p-items-t">
+                <p>key starter</p>
+
+                <p>$120</p>
+                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+
+            </div>
+        </div>
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{% static 'images/bag3.jpeg' %}" alt="Motor Spare Part">
+            </div>
+            <div class="p-items-t">
+                <p>Motor Spare Part</p>
+                <p>$120</p>
+                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+
+            </div>
+        </div>
+
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{% static 'images/bag4.jpeg' %}" alt="Motor Spare Part">
+            </div>
+            <div class="p-items-t">
+                <p>Motor Spare Part</p>
+                <p>$120</p>
+                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+
+            </div>
+        </div>
+
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{% static 'images/bags.jpeg' %}" alt="Motor Spare Part">
+            </div>
+            <div class="p-items-t">
+                <p>Motor Spare Part</p>
+                <p>$120</p>
+                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+
+            </div>
+        </div>
+
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{% static 'images/bags1.jpeg' %}" alt="Motor Spare Part">
+            </div>
+            <div class="p-items-t">
+                <p>Motor Spare Part</p>
+                <p>$120</p>
+                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+
+            </div>
+        </div>
+
+
+        <!-- Product Item 2 -->
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{% static 'images/backpack.jpeg' %}" alt="Engine Cover">
+            </div>
+            <div class="p-items-t">
+                <p>Engine Cover</p>
+                <p>$80</p>
+                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+            </div>
+        </div>
+
+        <!-- Product Item 3 -->
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{% static 'images/handbag.jpeg' %}" alt="Converse Shoes">
+            </div>
+            <div class="p-items-t">
+                <p>Converse Shoes</p>
+                <p>$50</p>
+                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-img-holder">
+            <img id="modal-img" src="" alt="">
+        </div>
+        <div class="modal-details">
+            <p id="modal-title"></p>
+            <p id="modal-price"></p>
+            <p>
+                <a id="whatsapp-link" href="#" target="_blank">
+                    <img src="https://th.bing.com/th/id/R.cf0c07758e4d97b05e0cb77e315b5f34?rik=f9QTPzCOuYOXKg&pid=ImgRaw&r=0" alt="WhatsApp Logo" class="whatsapp-logo">
+                            <span class="whatsapp-text">Send a WhatsApp message</span>
+
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+        <div id="show-board" class="section-section">
+
+            <div class="show-t">
+                <p>ANYTHING AND EVERYTHING YOU'RE LOOKING FOR</p>
+               <p>
+      Welcome to my store, we sell Clothes, Bags, Boxes, Machinery, Tools of all kinds, MotorSpareParts and many more.
+            </p>
+                <button>More About Us</button>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+<div class="popular-section">
+    <h2 class="popular-heading">Top Pick</h2>
+    <div class="popular-line section-section scroll-container">
+        <!-- Product Item 1 -->
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{% static 'images/bag2.jpeg' %}" alt="Motor Spare Part">
+            </div>
+            <div class="p-items-t">
+                <p>key starter</p>
+
+                <p>$120</p>
+                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+
+            </div>
+        </div>
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{% static 'images/bag3.jpeg' %}" alt="Motor Spare Part">
+            </div>
+            <div class="p-items-t">
+                <p>Motor Spare Part</p>
+                <p>$120</p>
+                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+
+            </div>
+        </div>
+
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{% static 'images/bag4.jpeg' %}" alt="Motor Spare Part">
+            </div>
+            <div class="p-items-t">
+                <p>Motor Spare Part</p>
+                <p>$120</p>
+                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+
+            </div>
+        </div>
+
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{% static 'images/bags.jpeg' %}" alt="Motor Spare Part">
+            </div>
+            <div class="p-items-t">
+                <p>Motor Spare Part</p>
+                <p>$120</p>
+                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+
+            </div>
+        </div>
+
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{% static 'images/bags1.jpeg' %}" alt="Motor Spare Part">
+            </div>
+            <div class="p-items-t">
+                <p>Motor Spare Part</p>
+                <p>$120</p>
+                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+
+            </div>
+        </div>
+
+
+        <!-- Product Item 2 -->
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{% static 'images/backpack.jpeg' %}" alt="Engine Cover">
+            </div>
+            <div class="p-items-t">
+                <p>Engine Cover</p>
+                <p>$80</p>
+                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+            </div>
+        </div>
+
+        <!-- Product Item 3 -->
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{% static 'images/handbag.jpeg' %}" alt="Converse Shoes">
+            </div>
+            <div class="p-items-t">
+                <p>Converse Shoes</p>
+                <p>$50</p>
+                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-img-holder">
+            <img id="modal-img" src="" alt="">
+        </div>
+        <div class="modal-details">
+            <p id="modal-title"></p>
+            <p id="modal-price"></p>
+            <p>
+                <a id="whatsapp-link" href="#" target="_blank">
+                    <img src="https://th.bing.com/th/id/R.cf0c07758e4d97b05e0cb77e315b5f34?rik=f9QTPzCOuYOXKg&pid=ImgRaw&r=0" alt="WhatsApp Logo" class="whatsapp-logo">
+                            <span class="whatsapp-text">Send a WhatsApp message</span>
+
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="popular-section">
+    <div class="popular-line section-section scroll-container">
+        <!-- Product Item 1 -->
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{% static 'images/shirt1.jpeg' %}" alt="Motor Spare Part">
+            </div>
+            <div class="p-items-t">
+                <p>key starter</p>
+
+                <p>$120</p>
+                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+
+            </div>
+        </div>
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{% static 'images/combat1.jpeg' %}" alt="Motor Spare Part">
+            </div>
+            <div class="p-items-t">
+                <p>Motor Spare Part</p>
+                <p>$120</p>
+                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+
+            </div>
+        </div>
+
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{% static 'images/shirt3.jpeg' %}" alt="Motor Spare Part">
+            </div>
+            <div class="p-items-t">
+                <p>Motor Spare Part</p>
+                <p>$120</p>
+                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+
+            </div>
+        </div>
+
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{% static 'images/shirt4.jpeg' %}" alt="Motor Spare Part">
+            </div>
+            <div class="p-items-t">
+                <p>Motor Spare Part</p>
+                <p>$120</p>
+                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+
+            </div>
+        </div>
+
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{% static 'images/combat2.jpeg' %}" alt="Motor Spare Part">
+            </div>
+            <div class="p-items-t">
+                <p>Motor Spare Part</p>
+                <p>$120</p>
+                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+
+            </div>
+        </div>
+
+
+        <!-- Product Item 2 -->
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{% static 'images/shoe1.jpeg' %}" alt="Engine Cover">
+            </div>
+            <div class="p-items-t">
+                <p>Engine Cover</p>
+                <p>$80</p>
+                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+            </div>
+        </div>
+
+        <!-- Product Item 3 -->
+        <div class="p-items" onclick="openModal(this)">
+            <div class="p-img-holder">
+                <img src="{% static 'images/shoe2.jpeg' %}" alt="Converse Shoes">
+            </div>
+            <div class="p-items-t">
+                <p>Converse Shoes</p>
+                <p>$50</p>
+                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-img-holder">
+            <img id="modal-img" src="" alt="">
+        </div>
+        <div class="modal-details">
+            <p id="modal-title"></p>
+            <p id="modal-price"></p>
+            <p>
+                <a id="whatsapp-link" href="#" target="_blank">
+                    <img src="https://th.bing.com/th/id/R.cf0c07758e4d97b05e0cb77e315b5f34?rik=f9QTPzCOuYOXKg&pid=ImgRaw&r=0" alt="WhatsApp Logo" class="whatsapp-logo">
+                            <span class="whatsapp-text">Send a WhatsApp message</span>
+
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+   <div class="newsletter">
+        <h3>Stay Updated with Our Latest Offers!</h3>
+        <p>Sign up for our newsletter and never miss an exciting deal or product launch.</p>
+        <form action="#" method="POST">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+
+<section class="contact-form">
+    <h2>Get in Touch</h2>
+    <p>If you have any questions or would like to know more about our products, feel free to contact us!</p>
+
+    <form action="#" method="POST">
+        {%csrf_token%}
+        <div class="input-group">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+        </div>
+
+        <div class="input-group">
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+        </div>
+
+        <div class="input-group">
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+</section>
+
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 You&MeShop. All Rights Reserved.</p>
+        <p class="quality-message">Experience the best! We sell only top-quality products for every need.</p>
+    </div>
+</footer>
+
+    </div>
+</body>
+<script>
+ // Open modal and populate data
+function openModal(element) {
+    const imgSrc = element.querySelector('img').src;
+    const title = element.querySelector('.p-items-t p:nth-of-type(1)').innerText;
+    const price = element.querySelector('.p-items-t p:nth-of-type(2)').innerText;
+    const whatsapp = element.querySelector('.whatsapp').getAttribute('data-whatsapp');
+
+    document.getElementById('modal-img').src = imgSrc;
+    document.getElementById('modal-title').innerText = title;
+    document.getElementById('modal-price').innerText = price;
+
+    // Set WhatsApp link with the vendor's number and pre-filled message
+    const message = "Hi, I came from your website and I'm interested in this product.";
+    const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`;
+    document.getElementById('whatsapp-link').href = whatsappLink;
+
+    document.getElementById('productModal').style.display = 'block';
+}
+
+// Close modal
+function closeModal() {
+    document.getElementById('productModal').style.display = 'none';
+}
+
+// Close modal if clicked outside
+window.onclick = function(event) {
+    const modal = document.getElementById('productModal');
+    if (event.target === modal) {
+        closeModal();
+    }
+}
+
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const searchBox = document.getElementById('search-box');
+    const searchResults = document.getElementById('search-results');
+    const searchForm = document.querySelector('form');
+    const searchButton = document.getElementById('search-btn');
+
+    searchBox.addEventListener('input', function () {
+        const query = searchBox.value.trim(); // Get input value and remove extra spaces
+
+        if (query.length > 0) { // Only search if there's input
+            fetch(`/live_search/?q=${encodeURIComponent(query)}`) // Corrected URL endpoint
+                .then(response => response.json()) // Parse JSON response
+                .then(data => {
+                    displayResults(data.results); // Call function to show results
+                })
+                .catch(error => console.error('Error:', error)); // Error handling
+        } else {
+            searchResults.innerHTML = ''; // Clear results if input is empty
+        }
+    });
+
+    // Function to display the results
+    function displayResults(results) {
+        searchResults.innerHTML = ''; // Clear previous results
+
+        if (results.length === 0) {
+            searchResults.innerHTML = '<p>No results found</p>';
+            return;
+        }
+
+        results.forEach(item => {
+            const resultItem = document.createElement('div');
+            resultItem.classList.add('search-result-item');
+            resultItem.innerHTML = `
+                <div>
+                    <p>${item.name}</p>
+                    <p>${item.price}</p>
+                </div>
+            `;
+
+            // Add an event listener to populate the search bar with the clicked result
+            resultItem.addEventListener('click', function () {
+                searchBox.value = item.name; // Set the search box value to the selected item's name
+                searchResults.innerHTML = ''; // Clear search results after selection
+            });
+
+            searchResults.appendChild(resultItem);
+        });
+    }
+
+    // Ensure the form submission works when the submit button is clicked
+    searchForm.addEventListener('submit', function (event) {
+        console.log('Form submitted with query: ', searchBox.value); // Debug log
+        // No need to prevent default form submission here
+    });
+
+    // Adding a click event listener to the button to log it for debugging
+    searchButton.addEventListener('click', function () {
+        console.log('Search button clicked'); // Debug log to check if the button click works
+    });
+});
+
+
+</script>
+
+</html>

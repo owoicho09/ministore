@@ -1,0 +1,491 @@
+*{
+    box-sizing: border-box;
+}
+html{
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+
+}
+body{
+    margin: 0;
+    height: auto;
+    overflow-x: hidden;
+}
+p,h1,h2{
+    margin: 0;
+    padding: 0;
+}
+#page-container{
+    width: 100%;
+    height: auto;
+}
+.nav-bar{
+    width: 100%;
+    height: 30px;
+}
+#hero {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.left-pack {
+    flex-basis: 40%;
+    text-align: center;
+    padding: 10px;
+    margin-top: -170px;  /* Adds space between columns on smaller screens */
+
+}
+
+.discount-t {
+    font-size: 14px;
+    font-weight: 400;
+    color: #008CBA; /* Add a color to make it stand out */
+}
+
+.heading-t {
+    font-size: 18px;
+    font-weight: 700;
+    padding: 0 15px;
+
+    color: #333; /* Make it dark for contrast */
+    margin: 10px 0;  /* Adds spacing between discount and heading */
+}
+
+.price-t {
+    font-size: 18px;
+    font-weight: 600;
+
+    color: #4FF5733; /* Green to indicate pricing */
+}
+
+#learn-more-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color:#008CBA;; /* Button color matching the discount text */
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+#learn-more-btn:hover {
+    background-color: #C44D1B; /* Slightly darker on hover */
+}
+
+.right-pack {
+    flex-basis: 100%;
+    position: relative;
+    min-height: 300px; /* Ensures a reasonable height for images */
+}
+
+.right-pack img {
+    width: 50%;         /* Adjusted to make the image smaller */
+    height: auto;       /* Ensures the image scales proportionally */
+    max-height: 900px;  /* Limits the height for better control */
+    object-position: center;
+    object-fit: cover;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+    #hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .left-pack {
+        flex-basis: 100%;
+          margin-top: -140px;  /* Adds space between columns on smaller screens */
+    }
+
+    .right-pack {
+        flex-basis: auto;
+        height: 200px; /* Ensures image doesn't take too much space */
+    }
+}
+/* Section container */
+.section-section{
+    margin: 2rem 0px;
+    padding: 0 25px;
+}
+.section-section h3 {
+    text-align: center; /* Centers the text horizontally */
+    margin-bottom: 20px; /* Optional: Adds spacing below the heading */
+}
+
+/* Shop category container with horizontal scrolling */
+#shop-by-category {
+    width: 100%;
+}
+
+.shop-category {
+    display: flex;
+    flex-wrap: nowrap; /* Prevents wrapping of items */
+    overflow-x: auto; /* Enables horizontal scrolling */
+    gap: 15px; /* Adds space between the items */
+    padding-bottom: 10px; /* Adds space at the bottom to make the scrollbar visible */
+    scroll-snap-type: x mandatory; /* Ensures smooth snapping between items */
+}
+
+/* Individual shop item styling */
+.shop-item {
+    flex: 0 0 auto; /* Prevents items from shrinking or growing */
+    width: 40%; /* Adjust the width of each item */
+    height: 100%;
+    padding: 5px;
+    text-align: center;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 25px;
+    scroll-snap-align: start; /* Ensures that the item snaps into place */
+}
+
+/* Image container for each item */
+.item-img {
+    padding: 10px;
+    background-color: white;
+    border-radius: 1000px; /* Rounded image container */
+}
+
+/* Text styling for item */
+.item-t {
+    padding: 10px;
+}
+
+/* Image styling */
+.item-img img {
+    width: 100%;
+    height: 100%; /* Adjust image size to cover the item */
+}
+
+
+/* Mobile-specific adjustments */
+@media (max-width: 100px) {
+    .shop-item {
+        width: 50%; /* Make items bigger on mobile */
+        height: 100px; /* Adjust height for mobile */
+    }
+
+    .shop-category {
+        gap: 20px; /* Adjust gap for mobile view */
+    }
+
+    .shop-category::-webkit-scrollbar {
+        height: 2px; /* Adjust scrollbar size for mobile */
+    }
+}
+
+#show-board {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;  /* Add padding around the content */
+    max-height: 500px;  /* Limit the height of the section */
+    background-color: #f9f9f9; /* Optional: Light background for contrast */
+    border-radius: 10px; /* Optional: Rounded corners */
+}
+
+.img-holder {
+    width: 100%;
+    height: 250px;  /* Set a fixed height for the image */
+    object-position: center;
+    object-fit: cover;  /* Keep the image covered */
+}
+
+.img-holder img {
+    width: 100%;
+    height: 100%;  /* Ensure the image fills the container */
+    object-fit: cover; /* Cover the container without distortion */
+}
+
+.show-t {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;  /* Space between the image and text */
+}
+
+.show-t p:first-child {
+    font-size: 18px;  /* Slightly smaller font size */
+    font-weight: 700;
+    margin: 0;  /* Remove margin */
+}
+
+.show-t p:nth-of-type(2) {
+    font-size: 14px;  /* Increase font size for readability */
+    font-weight: 400;
+    padding: 0 1rem;
+    color: #555;  /* Darken the text for better contrast */
+}
+
+.show-t button {
+    font-size: 16px;  /* Slightly larger font size for the button */
+    background-color: #008CBA;  /* Green color */
+    color: white;
+    padding: 8px 20px;
+    margin-top: 20px;  /* Space between text and button */
+    border: none;  /* Remove border */
+    border-radius: 5px;  /* Optional: Rounded corners */
+    cursor: pointer;  /* Add pointer cursor */
+}
+
+.show-t button:hover {
+    background-color: #218838;  /* Darker green on hover */
+}
+
+
+.popular-section {
+    width: 100%;
+    text-align: center; /* Centers the heading */
+    margin-bottom: 15px; /* Adds space below the heading */
+}
+
+.popular-heading {
+    font-size: 24px; /* Heading font size */
+    font-weight: bold; /* Makes heading bold */
+    margin-bottom: 10px; /* Adds space below the heading */
+}
+
+
+.popular-line {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap; /* Ensures no wrapping */
+    overflow-x: auto; /* Enables horizontal scrolling */
+    gap: 10px; /* Adds spacing between items */
+    padding: 10px;
+    white-space: nowrap; /* Prevents wrapping */
+    scroll-snap-type: x mandatory; /* Smooth scrolling effect */
+}
+
+/* Custom scrollbar */
+.popular-line::-webkit-scrollbar {
+    height: 2px; /* Scrollbar height */
+}
+
+.popular-line::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+.popular-line::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.p-items {
+    width: 42%; /* Sets item width */
+    flex-shrink: 0; /* Prevents items from shrinking */
+    aspect-ratio: 1/1;
+    scroll-snap-align: start; /* Aligns items when scrolling */
+}
+
+.p-items-t p:first-child {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.p-items-t p:nth-of-type(2),
+.p-items-t p:nth-of-type(3) {
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+.p-img-holder {
+    width: 100%;
+    height: 100%;
+}
+
+.p-img-holder img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.footer-section{
+    width: 100%;
+    text-align: center;
+}
+.footer-section p:first-child{
+    font-weight: 700;
+    font-size: 25px;
+}
+.footer-section p:nth-of-type(2){
+    font-weight: 400;
+    font-size: 16px;
+    margin-top: 1rem;
+}
+
+@media (min-width:700px){
+    #hero{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        background-color: lightgrey;
+        height: auto;
+    }
+    .left-pack {
+    flex-basis: 40%;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 0;  /* Remove margin to bring it closer to the image */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* Centers the content vertically */
+}
+
+    #shop-by-category{
+        padding: 0 3rem;
+    }
+    .shop-category{
+        flex-wrap: nowrap;
+    }
+    .shop-item{
+        width: 14.29%;
+    }
+    #show-board{
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    .popular-line{
+        flex-wrap: nowrap;
+    }
+    .p-items{
+        width: 20%;
+    }
+    .p-items-t{
+        margin-top: 8px;
+    }
+    .footer-section p:nth-of-type(2){
+        padding: 0 20px;
+    }
+}
+
+
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.modal-img-holder img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.modal-details p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+/* WhatsApp Logo Button Styling */
+.whatsapp-logo {
+    width: 40px;
+    height: 40px;
+    display: center; /* Make the logo block-level to place it above the text */
+    margin-bottom: 10px; /* Space between logo and text */
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.whatsapp-logo:hover {
+    transform: scale(1.1);
+}
+.whatsapp-text {
+    font-size: 16px;
+    color: #25D366; /* WhatsApp green */
+    font-weight: bold;
+    text-align: center; /* Center-align the text */
+    display: block; /* Ensure the text is block-level and below the logo */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+
+
+
+<!-- CSS for Modal -->
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.modal-image img {
+    width: 100%;
+    border-radius: 8px;
+}
+.modal-details h2 {
+    margin-top: 15px;
+    font-size: 1.5em;
+}
+.modal-details p {
+    margin: 10px 0;
+}
+.whatsapp-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    background-color: #25D366;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+}

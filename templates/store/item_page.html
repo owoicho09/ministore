@@ -1,0 +1,185 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/mike-parody-commerce.css' %}">
+     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <title>my ecommerce</title>
+</head>
+<body>
+    <div id="page-container">
+        <div class="nav-bar">
+        <nav>
+    <div class="search-bar">
+    <form action="{% url 'store:search' %}" method="GET">
+        <input type="text" id="search-box" placeholder="Search for products..." autocomplete="off" name="q">
+        <button type="submit" id="search-btn">Search</button>
+        <div id="search-results"></div>
+    </form>
+
+</div>
+</nav>
+
+
+        </div>
+
+
+<div class="popular-section">
+<div class="product-grid section-container">
+    {% if items %}
+        {% for item in items %}
+            <div class="product-card" onclick="openModal(this)">
+                <div class="product-image">
+                    <img src="{{ item.image.url }}" alt="{{ item.name }}">
+                </div>
+                <div class="product-details">
+                    <p class="product-name">{{ item.name }}</p>
+                    <p class="product-description">GOOD PRODUCT GOOD PRODUCTGOOD PRODUCTGOOD PRODUCT</p>
+                    <p class="product-price">₦ {{ item.price }}</p>
+                    <p class="contact-number" data-whatsapp="081428784380">{{ item.phone }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>All items in this category are sold out, restock soon.</p>
+    {% endif %}
+</div>
+
+</div>
+
+<!-- Modal -->
+<!-- Modal Structure -->
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div class="modal-image">
+            <img id="modalImage" src="" alt="">
+        </div>
+        <div class="modal-details">
+            <h2 id="modalName"></h2>
+            <p id="modalDescription"></p>
+            <p id="modalPrice"></p>
+            <a id="whatsappButton" href="" target="_blank" class="whatsapp-btn">Contact on WhatsApp</a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2024 You&MeShop. All Rights Reserved.</p>
+        <p class="quality-message">Experience the best! We sell only top-quality products for every need.</p>
+    </div>
+</footer>
+
+    </div>
+</body>
+<!-- JavaScript for Modal Functionality -->
+<script>
+function openModal(element) {
+    // Get product details
+    const image = element.querySelector('img').src;
+    const name = element.querySelector('.product-name').innerText;
+    const description = element.querySelector('.product-description').innerText;
+    const price = element.querySelector('.product-price').innerText;
+    const whatsapp = element.querySelector('.contact-number').getAttribute('data-whatsapp');
+
+    // Set modal content
+    document.getElementById('modalImage').src = image;
+    document.getElementById('modalName').innerText = name;
+    document.getElementById('modalDescription').innerText = description;
+    document.getElementById('modalPrice').innerText = price;
+
+    // Create WhatsApp link
+    const message = "Hi, I came from your website and I'm interested in this product.";
+    const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`;
+    document.getElementById('whatsappButton').href = whatsappLink;
+
+    // Show modal
+    document.getElementById('productModal').style.display = 'flex';
+}
+
+function closeModal() {
+    document.getElementById('productModal').style.display = 'none';
+}
+
+// Close modal if clicked outside content
+window.onclick = function(event) {
+    const modal = document.getElementById('productModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+}
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const searchBox = document.getElementById('search-box');
+    const searchResults = document.getElementById('search-results');
+    const searchForm = document.querySelector('form');
+    const searchButton = document.getElementById('search-btn');
+
+    searchBox.addEventListener('input', function () {
+        const query = searchBox.value.trim(); // Get input value and remove extra spaces
+
+        if (query.length > 0) { // Only search if there's input
+            fetch(`/live_search/?q=${encodeURIComponent(query)}`) // Corrected URL endpoint
+                .then(response => response.json()) // Parse JSON response
+                .then(data => {
+                    displayResults(data.results); // Call function to show results
+                })
+                .catch(error => console.error('Error:', error)); // Error handling
+        } else {
+            searchResults.innerHTML = ''; // Clear results if input is empty
+        }
+    });
+
+    // Function to display the results
+    function displayResults(results) {
+        searchResults.innerHTML = ''; // Clear previous results
+
+        if (results.length === 0) {
+            searchResults.innerHTML = '<p>No results found</p>';
+            return;
+        }
+
+        results.forEach(item => {
+            const resultItem = document.createElement('div');
+            resultItem.classList.add('search-result-item');
+            resultItem.innerHTML = `
+                <div>
+                    <p>${item.name}</p>
+                    <p>${item.price}</p>
+                </div>
+            `;
+
+            // Add an event listener to populate the search bar with the clicked result
+            resultItem.addEventListener('click', function () {
+                searchBox.value = item.name; // Set the search box value to the selected item's name
+                searchResults.innerHTML = ''; // Clear search results after selection
+            });
+
+            searchResults.appendChild(resultItem);
+        });
+    }
+
+    // Ensure the form submission works when the submit button is clicked
+    searchForm.addEventListener('submit', function (event) {
+        console.log('Form submitted with query: ', searchBox.value); // Debug log
+        // No need to prevent default form submission here
+    });
+
+    // Adding a click event listener to the button to log it for debugging
+    searchButton.addEventListener('click', function () {
+        console.log('Search button clicked'); // Debug log to check if the button click works
+    });
+});
+
+
+</script>
+</html>
