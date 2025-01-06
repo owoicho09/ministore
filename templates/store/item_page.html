@@ -39,7 +39,7 @@
                     <p class="product-name">{{ item.name }}</p>
                     <p class="product-description">GOOD PRODUCT GOOD PRODUCTGOOD PRODUCTGOOD PRODUCT</p>
                     <p class="product-price">₦ {{ item.price }}</p>
-                    <p class="contact-number" data-whatsapp="081428784380">{{ item.phone }}</p>
+                    <p class="contact-number" data-whatsapp="{{ item.phone }}">{{ item.phone }}</p>
                 </div>
             </div>
         {% endfor %}
@@ -88,8 +88,12 @@ function openModal(element) {
     const name = element.querySelector('.product-name').innerText;
     const description = element.querySelector('.product-description').innerText;
     const price = element.querySelector('.product-price').innerText;
-    const whatsapp = element.querySelector('.contact-number').getAttribute('data-whatsapp');
+    let whatsapp = element.querySelector('.contact-number').getAttribute('data-whatsapp');
 
+        // Format the WhatsApp number for Nigeria (if needed)
+        if (whatsapp.startsWith('0')) {
+            whatsapp = '234' + whatsapp.slice(1); // Replace leading 0 with 234
+        }
     // Set modal content
     document.getElementById('modalImage').src = image;
     document.getElementById('modalName').innerText = name;
@@ -100,6 +104,7 @@ function openModal(element) {
     const message = "Hi, I came from your website and I'm interested in this product.";
     const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`;
     document.getElementById('whatsappButton').href = whatsappLink;
+    console.log('---',whatsappLink)
 
     // Show modal
     document.getElementById('productModal').style.display = 'flex';

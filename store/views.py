@@ -53,11 +53,9 @@ def search(request):
 def live_search(request):
     query = request.GET.get('q', '')  # Get the query parameter
     results = []
-    print(query)
 
     if query:  # Check if query is not empty
         items = Items.objects.filter(name__icontains=query)
-        print(items)
         results = list(items.values('id','name', 'price'))  # Convert to JSON-friendly format
 
     return JsonResponse({'results': results})
