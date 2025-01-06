@@ -1,7 +1,6 @@
 aiobotocore==2.14.0
 
 alembic==1.13.3
-altair @ file:///C:/b/abs_27reu1igbg/croot/altair_1687526066495/work
 amqp==5.3.1
 
 apispec==6.6.1
