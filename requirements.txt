@@ -114,7 +114,6 @@ python-decouple
 
 python-lsp-jsonrpc
 
-pywin32
 
 qrcode
 
