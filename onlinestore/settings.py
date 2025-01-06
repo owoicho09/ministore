@@ -33,7 +33,7 @@ API_SECRET= env('API_SECRET')
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['https://ministore-ulaz.onrender.com',
                      '127.0.0.1',
@@ -101,7 +101,7 @@ WSGI_APPLICATION = "onlinestore.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+         'NAME': BASE_DIR / 'db_store' / 'db.sqlite3',
     }
 }
 

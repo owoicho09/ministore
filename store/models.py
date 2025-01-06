@@ -19,7 +19,7 @@ cloudinary.config(
 
 
 class Products(models.Model):
-    user = models.ForeignKey(User, on_delete=models.SET_NULL,null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL,null=True, blank=True, db_index=True)
     name = models.CharField(max_length=500)
     phone = models.CharField(max_length=20, null=True, blank=True)
     product_id = ShortUUIDField(unique=True, length=10, max_length=20, alphabet=string.ascii_letters + string.digits)
@@ -32,7 +32,7 @@ class Items(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL,null=True, blank=True)
     product = models.ForeignKey(Products, on_delete=models.CASCADE)
     image = CloudinaryField('image', null=True, blank=True)
-    name = models.CharField(max_length=300)
+    name = models.CharField(max_length=300, db_index=True)
     phone = models.CharField(max_length=20,null=True,blank=True)
     price = models.DecimalField(max_digits=12, decimal_places=2, default=0.00, null=True, blank=True)
     sold = models.BooleanField(default=False)
