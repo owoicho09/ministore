@@ -1,4 +1,6 @@
 {% load static %}
+{% load humanize %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -69,7 +71,7 @@
             <div class="p-items-t">
                 <p>{{item.name}}</p>
 
-                <p>₦ {{item.price}}</p>
+                <p>₦ {{item.price|intcomma}}</p>
                 <p class="whatsapp" data-whatsapp="081428784380">{{item.phone}}</p>
 
             </div>
@@ -114,7 +116,7 @@
             <div class="p-items-t">
                 <p>{{item.name}}</p>
 
-                <p>₦{{item.price}}</p>
+                <p>₦{{item.price|intcomma}}</p>
                 <p class="whatsapp" data-whatsapp="081428784380">{{item.phone}}</p>
 
             </div>
@@ -179,7 +181,7 @@
             <div class="p-items-t">
                 <p>{{item.name}}</p>
 
-                <p>₦{{item.price}}</p>
+                <p>₦{{item.price|intcomma}}</p>
                 <p class="whatsapp" data-whatsapp="081428784380">{{item.phone}}</p>
 
             </div>
@@ -224,7 +226,7 @@
             <div class="p-items-t">
                 <p>{{item.name}}</p>
 
-                <p>₦{{item.phone}}</p>
+                <p>₦{{item.price |intcomma}}</p>
                 <p class="whatsapp" data-whatsapp="081428784380">{{item.phone}}</p>
 
             </div>
