@@ -61,7 +61,7 @@
     <h2 class="popular-heading">Popular Items</h2>
     <div class="popular-line section-section scroll-container">
         <!-- Product Item 1 -->
-        {% for item in items %}
+        {% for item in featured_tools_items %}
         <div class="p-items" onclick="openModal(this)">
             <div class="p-img-holder">
                 <img src="{{item.image.url}}" alt="Motor Spare Part">
@@ -106,90 +106,22 @@
 <div class="popular-section">
     <div class="popular-line section-section scroll-container">
         <!-- Product Item 1 -->
+        {% for item in featured_motorpart_items %}
         <div class="p-items" onclick="openModal(this)">
             <div class="p-img-holder">
-                <img src="{% static 'images/bag2.jpeg' %}" alt="Motor Spare Part">
+                <img src="{{item.image.url}}" alt="Motor Spare Part">
             </div>
             <div class="p-items-t">
-                <p>key starter</p>
+                <p>{{item.name}}</p>
 
-                <p>$120</p>
-                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
-
-            </div>
-        </div>
-        <div class="p-items" onclick="openModal(this)">
-            <div class="p-img-holder">
-                <img src="{% static 'images/bag3.jpeg' %}" alt="Motor Spare Part">
-            </div>
-            <div class="p-items-t">
-                <p>Motor Spare Part</p>
-                <p>$120</p>
-                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+                <p>₦{{item.price}}</p>
+                <p class="whatsapp" data-whatsapp="081428784380">{{item.phone}}</p>
 
             </div>
         </div>
 
-        <div class="p-items" onclick="openModal(this)">
-            <div class="p-img-holder">
-                <img src="{% static 'images/bag4.jpeg' %}" alt="Motor Spare Part">
-            </div>
-            <div class="p-items-t">
-                <p>Motor Spare Part</p>
-                <p>$120</p>
-                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+        {% endfor %}
 
-            </div>
-        </div>
-
-        <div class="p-items" onclick="openModal(this)">
-            <div class="p-img-holder">
-                <img src="{% static 'images/bags.jpeg' %}" alt="Motor Spare Part">
-            </div>
-            <div class="p-items-t">
-                <p>Motor Spare Part</p>
-                <p>$120</p>
-                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
-
-            </div>
-        </div>
-
-        <div class="p-items" onclick="openModal(this)">
-            <div class="p-img-holder">
-                <img src="{% static 'images/bags1.jpeg' %}" alt="Motor Spare Part">
-            </div>
-            <div class="p-items-t">
-                <p>Motor Spare Part</p>
-                <p>$120</p>
-                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
-
-            </div>
-        </div>
-
-
-        <!-- Product Item 2 -->
-        <div class="p-items" onclick="openModal(this)">
-            <div class="p-img-holder">
-                <img src="{% static 'images/backpack.jpeg' %}" alt="Engine Cover">
-            </div>
-            <div class="p-items-t">
-                <p>Engine Cover</p>
-                <p>$80</p>
-                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
-            </div>
-        </div>
-
-        <!-- Product Item 3 -->
-        <div class="p-items" onclick="openModal(this)">
-            <div class="p-img-holder">
-                <img src="{% static 'images/handbag.jpeg' %}" alt="Converse Shoes">
-            </div>
-            <div class="p-items-t">
-                <p>Converse Shoes</p>
-                <p>$50</p>
-                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -239,90 +171,21 @@
     <h2 class="popular-heading">Top Pick</h2>
     <div class="popular-line section-section scroll-container">
         <!-- Product Item 1 -->
+        {% for item in featured_shoes_items %}
         <div class="p-items" onclick="openModal(this)">
             <div class="p-img-holder">
-                <img src="{% static 'images/bag2.jpeg' %}" alt="Motor Spare Part">
+                <img src="{{item.image.url}}" alt="Motor Spare Part">
             </div>
             <div class="p-items-t">
-                <p>key starter</p>
+                <p>{{item.name}}</p>
 
-                <p>$120</p>
-                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+                <p>₦{{item.price}}</p>
+                <p class="whatsapp" data-whatsapp="081428784380">{{item.phone}}</p>
 
             </div>
         </div>
-        <div class="p-items" onclick="openModal(this)">
-            <div class="p-img-holder">
-                <img src="{% static 'images/bag3.jpeg' %}" alt="Motor Spare Part">
-            </div>
-            <div class="p-items-t">
-                <p>Motor Spare Part</p>
-                <p>$120</p>
-                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+        {% endfor %}
 
-            </div>
-        </div>
-
-        <div class="p-items" onclick="openModal(this)">
-            <div class="p-img-holder">
-                <img src="{% static 'images/bag4.jpeg' %}" alt="Motor Spare Part">
-            </div>
-            <div class="p-items-t">
-                <p>Motor Spare Part</p>
-                <p>$120</p>
-                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
-
-            </div>
-        </div>
-
-        <div class="p-items" onclick="openModal(this)">
-            <div class="p-img-holder">
-                <img src="{% static 'images/bags.jpeg' %}" alt="Motor Spare Part">
-            </div>
-            <div class="p-items-t">
-                <p>Motor Spare Part</p>
-                <p>$120</p>
-                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
-
-            </div>
-        </div>
-
-        <div class="p-items" onclick="openModal(this)">
-            <div class="p-img-holder">
-                <img src="{% static 'images/bags1.jpeg' %}" alt="Motor Spare Part">
-            </div>
-            <div class="p-items-t">
-                <p>Motor Spare Part</p>
-                <p>$120</p>
-                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
-
-            </div>
-        </div>
-
-
-        <!-- Product Item 2 -->
-        <div class="p-items" onclick="openModal(this)">
-            <div class="p-img-holder">
-                <img src="{% static 'images/backpack.jpeg' %}" alt="Engine Cover">
-            </div>
-            <div class="p-items-t">
-                <p>Engine Cover</p>
-                <p>$80</p>
-                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
-            </div>
-        </div>
-
-        <!-- Product Item 3 -->
-        <div class="p-items" onclick="openModal(this)">
-            <div class="p-img-holder">
-                <img src="{% static 'images/handbag.jpeg' %}" alt="Converse Shoes">
-            </div>
-            <div class="p-items-t">
-                <p>Converse Shoes</p>
-                <p>$50</p>
-                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -353,90 +216,21 @@
 <div class="popular-section">
     <div class="popular-line section-section scroll-container">
         <!-- Product Item 1 -->
+        {% for item in featured_clothes_items %}
         <div class="p-items" onclick="openModal(this)">
             <div class="p-img-holder">
-                <img src="{% static 'images/shirt1.jpeg' %}" alt="Motor Spare Part">
+                <img src="{{item.image.url}}" alt="Motor Spare Part">
             </div>
             <div class="p-items-t">
-                <p>key starter</p>
+                <p>{{item.name}}</p>
 
-                <p>$120</p>
-                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+                <p>₦{{item.phone}}</p>
+                <p class="whatsapp" data-whatsapp="081428784380">{{item.phone}}</p>
 
             </div>
         </div>
-        <div class="p-items" onclick="openModal(this)">
-            <div class="p-img-holder">
-                <img src="{% static 'images/combat1.jpeg' %}" alt="Motor Spare Part">
-            </div>
-            <div class="p-items-t">
-                <p>Motor Spare Part</p>
-                <p>$120</p>
-                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
+        {% endfor %}
 
-            </div>
-        </div>
-
-        <div class="p-items" onclick="openModal(this)">
-            <div class="p-img-holder">
-                <img src="{% static 'images/shirt3.jpeg' %}" alt="Motor Spare Part">
-            </div>
-            <div class="p-items-t">
-                <p>Motor Spare Part</p>
-                <p>$120</p>
-                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
-
-            </div>
-        </div>
-
-        <div class="p-items" onclick="openModal(this)">
-            <div class="p-img-holder">
-                <img src="{% static 'images/shirt4.jpeg' %}" alt="Motor Spare Part">
-            </div>
-            <div class="p-items-t">
-                <p>Motor Spare Part</p>
-                <p>$120</p>
-                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
-
-            </div>
-        </div>
-
-        <div class="p-items" onclick="openModal(this)">
-            <div class="p-img-holder">
-                <img src="{% static 'images/combat2.jpeg' %}" alt="Motor Spare Part">
-            </div>
-            <div class="p-items-t">
-                <p>Motor Spare Part</p>
-                <p>$120</p>
-                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
-
-            </div>
-        </div>
-
-
-        <!-- Product Item 2 -->
-        <div class="p-items" onclick="openModal(this)">
-            <div class="p-img-holder">
-                <img src="{% static 'images/shoe1.jpeg' %}" alt="Engine Cover">
-            </div>
-            <div class="p-items-t">
-                <p>Engine Cover</p>
-                <p>$80</p>
-                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
-            </div>
-        </div>
-
-        <!-- Product Item 3 -->
-        <div class="p-items" onclick="openModal(this)">
-            <div class="p-img-holder">
-                <img src="{% static 'images/shoe2.jpeg' %}" alt="Converse Shoes">
-            </div>
-            <div class="p-items-t">
-                <p>Converse Shoes</p>
-                <p>$50</p>
-                <p class="whatsapp" data-whatsapp="081428784380">081428784380</p>
-            </div>
-        </div>
     </div>
 </div>
 

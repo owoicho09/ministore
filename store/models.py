@@ -34,6 +34,8 @@ class Items(models.Model):
     image = CloudinaryField('image', null=True, blank=True)
     name = models.CharField(max_length=300, db_index=True)
     phone = models.CharField(max_length=20,null=True,blank=True)
+    description = models.TextField(null=True, blank=True)  # Add optional description
+
     price = models.DecimalField(max_digits=12, decimal_places=2, default=0.00, null=True, blank=True)
     sold = models.BooleanField(default=False)
     featured = models.BooleanField(default=True)

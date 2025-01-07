@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 import environ
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,6 +23,7 @@ env = environ.Env()
 
 # Read the .env file
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+DATABASE_URL = env('DATABASE_URL')
 
 CLOUD_NAME= env('CLOUD_NAME')
 API_KEY= env('API_KEY')
@@ -33,7 +35,7 @@ API_SECRET= env('API_SECRET')
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['https://ministore-ulaz.onrender.com',
                      '127.0.0.1',
@@ -98,12 +100,18 @@ WSGI_APPLICATION = "onlinestore.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-         'NAME': BASE_DIR / 'db_store' / 'db.sqlite3',
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST', default='localhost'),
+        'PORT': env('DB_PORT', cast=int, default=5432),
     }
 }
+DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 
 
 # Password validation
@@ -157,6 +165,7 @@ CLOUDINARY_STORAGE = {
 
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+AUTH_USER_MODEL = 'userauth.User'
 
 
 # Default primary key field type
