@@ -18,7 +18,6 @@ def index(request):
     # If any featured product is found, retrieve associated items
     if featured_tools:
         items = Items.objects.filter(product=featured_tools, featured=True)
-        print('---',items)
     if featured_motorpart:
         motorpart = Items.objects.filter(product=featured_motorpart, featured=True)
     if featured_shoes:

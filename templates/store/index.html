@@ -72,7 +72,7 @@
                 <p>{{item.name}}</p>
 
                 <p>₦ {{item.price|intcomma}}</p>
-                <p class="whatsapp" data-whatsapp="081428784380">{{item.phone}}</p>
+                <p class="whatsapp" data-whatsapp="{{item.phone}}">{{item.phone}}</p>
 
             </div>
         </div>
@@ -94,7 +94,6 @@
 
             <p>
                 <a id="whatsapp-link" href="#" target="_blank">
-                    <img src="https://th.bing.com/th/id/R.cf0c07758e4d97b05e0cb77e315b5f34?rik=f9QTPzCOuYOXKg&pid=ImgRaw&r=0" alt="WhatsApp Logo" class="whatsapp-logo">
                             <span class="whatsapp-text">Send a WhatsApp message</span>
 
                 </a>
@@ -117,7 +116,7 @@
                 <p>{{item.name}}</p>
 
                 <p>₦{{item.price|intcomma}}</p>
-                <p class="whatsapp" data-whatsapp="081428784380">{{item.phone}}</p>
+                <p class="whatsapp" data-whatsapp="{{item.phone}}">{{item.phone}}</p>
 
             </div>
         </div>
@@ -139,7 +138,6 @@
             <p id="modal-price"></p>
             <p>
                 <a id="whatsapp-link" href="#" target="_blank">
-                    <img src="https://th.bing.com/th/id/R.cf0c07758e4d97b05e0cb77e315b5f34?rik=f9QTPzCOuYOXKg&pid=ImgRaw&r=0" alt="WhatsApp Logo" class="whatsapp-logo">
                             <span class="whatsapp-text">Send a WhatsApp message</span>
 
                 </a>
@@ -182,7 +180,7 @@
                 <p>{{item.name}}</p>
 
                 <p>₦{{item.price|intcomma}}</p>
-                <p class="whatsapp" data-whatsapp="081428784380">{{item.phone}}</p>
+                <p class="whatsapp" data-whatsapp="{{item.phone}}">{{item.phone}}</p>
 
             </div>
         </div>
@@ -203,7 +201,6 @@
             <p id="modal-price"></p>
             <p>
                 <a id="whatsapp-link" href="#" target="_blank">
-                    <img src="https://th.bing.com/th/id/R.cf0c07758e4d97b05e0cb77e315b5f34?rik=f9QTPzCOuYOXKg&pid=ImgRaw&r=0" alt="WhatsApp Logo" class="whatsapp-logo">
                             <span class="whatsapp-text">Send a WhatsApp message</span>
 
                 </a>
@@ -227,7 +224,7 @@
                 <p>{{item.name}}</p>
 
                 <p>₦{{item.price |intcomma}}</p>
-                <p class="whatsapp" data-whatsapp="081428784380">{{item.phone}}</p>
+                <p class="whatsapp" data-whatsapp="{{item.phone}}">{{item.phone}}</p>
 
             </div>
         </div>
@@ -248,8 +245,7 @@
             <p id="modal-price"></p>
             <p>
                 <a id="whatsapp-link" href="#" target="_blank">
-                    <img src="https://th.bing.com/th/id/R.cf0c07758e4d97b05e0cb77e315b5f34?rik=f9QTPzCOuYOXKg&pid=ImgRaw&r=0" alt="WhatsApp Logo" class="whatsapp-logo">
-                            <span class="whatsapp-text">Send a WhatsApp message</span>
+                        <span class="whatsapp-text">Send a WhatsApp message</span>
 
                 </a>
             </p>
@@ -306,7 +302,10 @@ function openModal(element) {
     const imgSrc = element.querySelector('img').src;
     const title = element.querySelector('.p-items-t p:nth-of-type(1)').innerText;
     const price = element.querySelector('.p-items-t p:nth-of-type(2)').innerText;
-    const whatsapp = element.querySelector('.whatsapp').getAttribute('data-whatsapp');
+    let whatsapp = element.querySelector('.whatsapp').getAttribute('data-whatsapp');
+        if (whatsapp.startsWith('0')) {
+            whatsapp = '234' + whatsapp.slice(1); // Replace leading 0 with 234
+        }
 
     document.getElementById('modal-img').src = imgSrc;
     document.getElementById('modal-title').innerText = title;
