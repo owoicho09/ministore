@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Products, ItemGallery, Items
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 
 # Create your views here.
 
@@ -72,3 +72,8 @@ def live_search(request):
         results = list(items.values('id','name', 'price'))  # Convert to JSON-friendly format
 
     return JsonResponse({'results': results})
+
+def sitemap_view(request):
+    with open('sitemap.xml', 'r') as file:
+        sitemap = file.read()
+    return HttpResponse(sitemap, content_type='application/xml')
