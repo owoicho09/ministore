@@ -1,157 +1,246 @@
 {% load static %}
+{% load humanize %}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/mike-parody-commerce.css' %}">
-     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="We sell high quality tools, clothes, motor spareparts, shoes and many accessories at a discounted price">
 
-    <title>my ecommerce</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <title>Lumian Limited</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+        .nav-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .search-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    #search-box {
+      padding: 8px 10px;
+      font-size: 14px;
+      width: 300px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    #search-btn {
+      padding: 8px 15px;
+      font-size: 14px;
+      background-color: #add8e6; /* Light blue */
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #search-btn:hover {
+      background-color: #87ceeb; /* Slightly darker blue on hover */
+    }
+    #search-results {
+  position: absolute; /* Position the results absolutely relative to the nearest positioned ancestor */
+  top: 100%; /* Place it directly below the search bar */
+  left: 0; /* Align it with the left edge of the search bar */
+  width: 100%; /* Match the width of the search bar */
+  max-height: 200px; /* Set a max height for scrollability */
+  overflow-y: auto; /* Add scroll for overflow */
+  background-color: #fff; /* Set background to white */
+  border: 1px solid #ddd; /* Add a border for visibility */
+  border-radius: 5px; /* Add rounded corners */
+  z-index: 1000; /* Ensure it appears above other elements */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for a floating effect */
+}
+
+.search-result-item {
+  padding: 10px;
+  border-bottom: 1px solid #eee; /* Add a divider between results */
+  cursor: pointer;
+}
+
+.search-result-item:last-child {
+  border-bottom: none; /* Remove border from the last result */
+}
+
+.search-result-item:hover {
+  background-color: #f9f9f9; /* Highlight on hover */
+}
+
+    .course-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      padding: 15px;
+      max-width: 600px;
+      margin: 0 auto 20px;
+    }
+    .course-card img {
+      max-width: 100%;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 10px;
+    }
+    .course-title {
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      margin: 10px 0;
+    }
+    .course-details {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .course-description {
+      font-size: 14px;
+      color: #666;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .whatsapp-btn {
+      color: white;
+      background-color: #25D366;
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .whatsapp-btn:hover {
+      background-color: #1DA759;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #777;
+      font-size: 14px;
+    }
+    .quality-message {
+      font-style: italic;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
-    <div id="page-container">
-        <div class="nav-bar">
-        <nav>
+<div class="nav-bar">
+  <div class="search-bar" style="position: relative;">
+    <form action="{% url 'store:search' %}" method="GET">
+      <input type="text" id="search-box" placeholder="Search for products..." autocomplete="off" name="q">
+      <button type="submit" id="search-btn">Search</button>
+    </form>
+    <div id="search-results"></div> <!-- Positioned for results display -->
+  </div>
+</div>
 
-</nav>
-
-
-        </div>
-
-<div class="popular-section">
-    <h3>Showing search results for: {{query}}</h3>
-
-<div class="product-grid section-container">
+  {% if items %}
     {% for item in items %}
-    <div class="product-card" onclick="openModal(this)">
-        <div class="product-image">
-            <img src="{{ item.image.url }}" alt="{{ item.name }}">
-        </div>
-        <div class="product-details">
-            <p class="product-name">{{ item.name }}</p>
-            <p class="product-description">GOOD PRODUCT GOOD PRODUCTGOOD PRODUCTGOOD PRODUCT</p>
-            <p class="product-price">₦ {{ item.price }}</p>
-            <p class="contact-number" data-whatsapp="081428784380">{{item.phone}}</p>
-        </div>
-    </div>
+<div class="course-details">Showing search results for: <h5>{{query}}</h5></div>
+      <div class="course-card">
+        <img src="{{item.image.url}}" alt="{{item.name}}">
+        <div class="course-title">{{item.name}}</div>
+        <div class="course-details">Price: ₦{{item.price|intcomma}}</div>
+        <div class="course-details">Mobile Number: {{item.phone}}</div>
+        <div class="course-description">{{item.description}}</div>
+        <a id="whatsappButton-{{forloop.counter}}"
+           href="https://wa.me/234{{item.phone|slice:'1'}}?text={{'Hi, I came from your website and I am interested in this product.'|urlencode}}"
+           target="_blank"
+           class="whatsapp-btn">
+           Contact on WhatsApp
+        </a>
+      </div>
     {% endfor %}
-</div>
-
-</div>
-
-<!-- Modal -->
-<!-- Modal Structure -->
-<div id="productModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <div class="modal-image">
-            <img id="modalImage" src="" alt="">
-        </div>
-        <div class="modal-details">
-            <h2 id="modalName"></h2>
-            <p id="modalDescription"></p>
-            <p id="modalPrice"></p>
-            <a id="whatsappButton" href="" target="_blank" class="whatsapp-btn">Contact on WhatsApp</a>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-<footer>
+  {% else %}
+    <p>All items in this category are sold out, restock soon.</p>
+  {% endif %}
+  <footer>
     <div class="footer-content">
-        <p>&copy; 2024 ShopNow. All Rights Reserved.</p>
-        <p class="quality-message">Experience the best! We sell only top-quality products for every need.</p>
+      <p>&copy; 2024 Lumian Ltd. All Rights Reserved.</p>
+      <p>Designed by O.M.O 08142878380</p>
+      <p class="quality-message">Experience the best! We sell only top-quality products for every need.</p>
     </div>
-</footer>
-
-    </div>
-</body>
-<!-- JavaScript for Modal Functionality -->
+  </footer>
 <script>
-function openModal(element) {
-    // Get product details
-    const image = element.querySelector('img').src;
-    const name = element.querySelector('.product-name').innerText;
-    const description = element.querySelector('.product-description').innerText;
-    const price = element.querySelector('.product-price').innerText;
-    const whatsapp = element.querySelector('.contact-number').getAttribute('data-whatsapp');
-
-    // Set modal content
-    document.getElementById('modalImage').src = image;
-    document.getElementById('modalName').innerText = name;
-    document.getElementById('modalDescription').innerText = description;
-    document.getElementById('modalPrice').innerText = price;
-
-    // Create WhatsApp link
-    const message = "Hi, I came from your website and I'm interested in this product.";
-    const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`;
-    document.getElementById('whatsappButton').href = whatsappLink;
-
-    // Show modal
-    document.getElementById('productModal').style.display = 'flex';
-}
-
-function closeModal() {
-    document.getElementById('productModal').style.display = 'none';
-}
-
-// Close modal if clicked outside content
-window.onclick = function(event) {
-    const modal = document.getElementById('productModal');
-    if (event.target === modal) {
-        modal.style.display = 'none';
-    }
-}
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', function () {
     const searchBox = document.getElementById('search-box');
     const searchResults = document.getElementById('search-results');
+    const searchForm = document.querySelector('form');
+    let debounceTimeout;
 
-    searchBox.addEventListener('input', function () {
-        const query = searchBox.value.trim(); // Get input value and remove extra spaces
-
-        if (query.length > 0) { // Only search if there's input
-            fetch(`/live-search/?q=${encodeURIComponent(query)}`) // Send AJAX request
-                .then(response => response.json()) // Parse JSON response
-                .then(data => {
-                    displayResults(data.results); // Call function to show results
-                })
-                .catch(error => console.error('Error:', error));
-        } else {
-            searchResults.innerHTML = ''; // Clear results if input is empty
-        }
-    });
-
-    function displayResults(results) {
-        searchResults.innerHTML = ''; // Clear previous results
-
-        if (results.length === 0) {
-            searchResults.innerHTML = '<p>No results found</p>';
-            return;
-        }
-
-        results.forEach(item => {
-            const resultItem = document.createElement('div');
-            resultItem.classList.add('search-result-item');
-            resultItem.innerHTML = `
-                <a href="/item/${item.id}">
-                    <img src="${item.image}" alt="${item.name}">
-                    <div>
-                        <p>${item.name}</p>
-                        <p>${item.price}</p>
-                    </div>
-                </a>
-            `;
-            searchResults.appendChild(resultItem);
-        });
+    // Debounce function to delay search input
+    function debounce(callback, delay) {
+      return function (...args) {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(() => callback(...args), delay);
+      };
     }
-});
 
+    // Fetch search results
+    async function fetchSearchResults(query) {
+      try {
+        const response = await fetch(`/live_search/?q=${encodeURIComponent(query)}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch search results');
+        }
+        const data = await response.json();
+        displayResults(data.results);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
 
+    // Display results in dropdown
+    function displayResults(results) {
+      searchResults.innerHTML = '';
+      if (results.length === 0) {
+        searchResults.innerHTML = '<p>No results found</p>';
+        return;
+      }
+
+      results.forEach(item => {
+        const resultItem = document.createElement('div');
+        resultItem.classList.add('search-result-item');
+        resultItem.innerHTML = `
+          <div>
+            <p>${item.name}</p>
+            <p>₦${item.price}</p>
+          </div>`;
+        resultItem.addEventListener('click', function () {
+          searchBox.value = item.name;
+          searchResults.innerHTML = '';
+        });
+        searchResults.appendChild(resultItem);
+      });
+    }
+
+    // Listen to input changes with debounce
+    searchBox.addEventListener(
+      'input',
+      debounce(function () {
+        const query = searchBox.value.trim();
+        if (query.length > 0) {
+          fetchSearchResults(query);
+        } else {
+          searchResults.innerHTML = '';
+        }
+      }, 300) // Adjust debounce delay as needed
+    );
+
+    // Form submission logging
+    searchForm.addEventListener('submit', function () {
+      console.log('Form submitted with query:', searchBox.value);
+    });
+  });
 </script>
+</body>
 </html>

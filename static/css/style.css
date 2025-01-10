@@ -105,25 +105,7 @@
 }
 
 
-    .hero {
-      text-align: center;
-      padding: 50px 20px;
-      background: #f4f4f4;
-    }
 
-    .hero h1 {
-      margin: 0 0 10px;
-    }
-
-    .hero .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #ff6600;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-    }
 
     .categories, .products, .testimonials, .contact {
       padding: 20px;
@@ -244,24 +226,15 @@
     }
 
  footer {
-    background-color:black; /* Dark background for contrast */
-    color: white; /* White text */
-    padding: 20px 0; /* Add padding for better spacing */
-    text-align: center; /* Center align text */
-}
-
-.footer-content p {
-    margin: 10px 0; /* Adds space between the paragraphs */
-}
-
-.quality-message {
-    font-size: 16px;
-    font-weight: bold;
-    color:#008CBA; /* Use an attention-grabbing color */
-    margin-top: 15px; /* Adds space between this and the copyright text */
-}
-
-
+      text-align: center;
+      margin-top: 40px;
+      color: #777;
+      font-size: 14px;
+    }
+    .quality-message {
+      font-style: italic;
+      color: #555;
+    }
 
 
 
