@@ -148,15 +148,17 @@
       <div class="course-card">
         <img src="{{item.image.url}}" alt="{{item.name}}">
         <div class="course-title">{{item.name}}</div>
-        <div class="course-details">Price: ₦{{item.price|intcomma}}</div>
+        <div class="course-details">Send a message for more details</div>
         <div class="course-details">Mobile Number: {{item.phone}}</div>
         <div class="course-description">{{item.description}}</div>
-        <a id="whatsappButton-{{forloop.counter}}"
-           href="https://wa.me/234{{item.phone|slice:'1'}}?text={{'Hi, I came from your website and I am interested in this product.'|urlencode}}"
-           target="_blank"
-           class="whatsapp-btn">
-           Contact on WhatsApp
-        </a>
+        <a id="whatsappButton-{{ forloop.counter }}"
+   href="https://wa.me/234{% if item.phone|slice:0 == '0' %}{{ item.phone|slice:1 }}{% else %}{{ item.phone }}{% endif %}?text={{ 'Hi, I came from your website and I am interested in this product.'|urlencode }}"
+   target="_blank"
+   class="whatsapp-btn">
+   Contact on WhatsApp
+</a>
+
+
       </div>
     {% endfor %}
   {% else %}
