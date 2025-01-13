@@ -74,3 +74,10 @@ class ItemGallery(models.Model):
             return mark_safe(
                 f"<img src='{self.image.url}' width='50' height='50' style='object-fit: cover; border-radius: 6px;' />")
         return "No Image"
+
+class StoreDisplayImage(models.Model):
+    name = models.CharField(blank=True,null=True, max_length=100)
+    image = CloudinaryField('image', null=True, blank=True)
+
+    def __str__(self):
+        return self.name

@@ -13,6 +13,84 @@
     <title>LUMIAN LIMITED</title>
 </head>
 <style>
+ /* Basic Carousel Styles */
+.carousel {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.carousel-images {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-card {
+  width: 100%; /* Each card takes full width of the container */
+  padding: 10px; /* Add some padding around the image */
+  box-sizing: border-box; /* Ensures padding is included in width calculation */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px #ccc; /* Add a border around the card */
+  border-radius: 15px; /* Optional: rounded corners for the card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for the card */
+}
+
+.carousel-card img {
+  width: 100%;
+  height: 400px; /* Set the height of the image */
+  object-fit: cover;
+  border-radius: 5px; /* Optional: rounded corners for the image */
+}
+
+/* Dot container */
+.carousel-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .carousel-images img {
+    width: 100vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-images img {
+    width: 100vw;
+  }
+}
+
+
+.show-t h2 {
+  font-size: 24px; /* Adjust size to fit your design */
+  text-align: center; /* Center the text */
+  font-weight: bold; /* Make the text bold */
+  color: #333; /* Set the desired text color */
+  margin-bottom: 10px; /* Add spacing below the heading */
+}
+
+
     footer {
       text-align: center;
       margin-top: 40px;
@@ -71,6 +149,43 @@
 
 
   </section>
+
+
+<section>
+  <div class="carousel">
+         <div class="show-t">
+            <h2>Best Prices</h2>
+        </div>
+    <div class="carousel-images">
+        {% for image in index_images %}
+      <div class="carousel-card">
+        <img src="{{image.image.url}}" alt="Image 1">
+      </div>
+        {% endfor %}
+
+    </div>
+    <div class="carousel-dots">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+
+    </div>
+  </div>
+    <div id="show-board" class="section-section">
+
+            <div class="show-t">
+                <p>We sell Brand new and Fairly used Items</p>
+               <p>
+                   Explore the catalog of <b>what we sell</b> above.
+                </p>
+            </div>
+        </div>
+
+</section>
 
 
 <div class="popular-section">
@@ -413,5 +528,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+  const images = document.querySelector(".carousel-images");
+  const dots = document.querySelectorAll(".dot");
+  let currentIndex = 0;
+  const totalImages = images.children.length;
 
+  function showNextImage() {
+    currentIndex = (currentIndex + 1) % totalImages;
+    images.style.transform = `translateX(-${currentIndex * 100}%)`;
+    updateDots();
+  }
+
+  function updateDots() {
+    dots.forEach((dot, index) => {
+      if (index === currentIndex) {
+        dot.classList.add("active");
+      } else {
+        dot.classList.remove("active");
+      }
+    });
+  }
+
+  // Set automatic scroll every 3 seconds
+  setInterval(showNextImage, 3000);
+
+  // Initialize the first image and dot
+  updateDots();
+});
+
+
+</script>
 </html>

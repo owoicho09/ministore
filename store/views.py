@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Products, ItemGallery, Items
+from .models import Products, ItemGallery, Items,StoreDisplayImage
 from django.http import JsonResponse, HttpResponse
 
 # Create your views here.
@@ -11,6 +11,8 @@ def index(request):
     featured_motorpart = Products.objects.filter(product_id='2uxQmSrbSZ').first()
     featured_shoes = Products.objects.filter(product_id='wTUkfGy7i4').first()
     featured_clothes = Products.objects.filter(product_id='uOinM1l5WQ').first()
+
+    index_images = StoreDisplayImage.objects.all()
 
     # If the product is found, retrieve all associated items
     items = motorpart = shoes = clothes = []
@@ -31,7 +33,8 @@ def index(request):
         'featured_tools_items': items,
         'featured_motorpart_items': motorpart,
         'featured_shoes_items': shoes,
-        'featured_clothes_items': clothes
+        'featured_clothes_items': clothes,
+        'index_images':index_images
     }
 
     return render(request, 'store/index.html', context)
